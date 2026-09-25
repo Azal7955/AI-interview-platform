@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+Interview Result - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<section class="page">
+
+    <div class="result-hero">
+
+        <div>
+
+            <div class="pill">
+                INTERVIEW COMPLETE
+            </div>
+
+            <h1>
+                Your Practice Result
+            </h1>
+
+            <p>
+                {{ interview.feedback }}
+            </p>
+
+        </div>
+
+
+        <div class="score">
+
+            {{
+            "%.1f"|format(
+                interview.score or 0
+            )
+            }}
+
+            <small>
+                /100
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="answer-review">
+
+        {% for question in questions %}
+
+        <div class="review-card">
+
+            <span>
+                Question {{ loop.index }}
+            </span>
+
+            <h3>
+                {{ question.question }}
+            </h3>
+
+            <p>
+
+                <b>
+                    Your Answer:
+                </b>
+
+                {{
+                    answers[loop.index0]
+                    if loop.index0 < answers|length
+                    else "No answer"
+                }}
+
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <a
+        class="btn primary"
+        href="{{ url_for('main.dashboard') }}"
+    >
+        Back to Dashboard
+    </a>
+
+</section>
+
+{% endblock %}

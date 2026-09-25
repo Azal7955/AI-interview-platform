@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<section class="page">
+
+    <div class="page-head">
+
+        <div>
+
+            <div class="pill">
+                DASHBOARD
+            </div>
+
+            <h1>
+                Hello, {{ current_user.name }} 👋
+            </h1>
+
+            <p>
+                Analyze your resume and
+                start a personalized interview.
+            </p>
+
+        </div>
+
+
+        <a
+            class="btn primary"
+            href="{{ url_for('resume.upload') }}"
+        >
+            + Analyze Resume
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="dash-card accent">
+
+            <span>
+                Resume Analysis
+            </span>
+
+            <h2>
+                Start with your resume
+            </h2>
+
+            <p>
+                Upload PDF/DOCX → AI analysis
+                → personalized questions.
+            </p>
+
+            <a href="{{ url_for('resume.upload') }}">
+                Upload Resume →
+            </a>
+
+        </div>
+
+
+        <div class="dash-card">
+
+            <span>
+                Interview History
+            </span>
+
+            <h2>
+                {{ interviews|length }}
+            </h2>
+
+            <p>
+                Practice sessions
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+        Recent Interviews
+    </h2>
+
+
+    {% if interviews %}
+
+    <div class="history">
+
+        {% for interview in interviews %}
+
+        <div class="history-row">
+
+            <div>
+
+                <b>
+                    Interview #{{ interview.id }}
+                </b>
+
+                <small>
+
+                    {{
+                    interview.created_at.strftime(
+                        '%d %b %Y, %I:%M %p'
+                    )
+                    }}
+
+                </small>
+
+            </div>
+
+
+            <strong>
+
+                {{
+                "%.1f"|format(
+                    interview.score or 0
+                )
+                }}%
+
+            </strong>
+
+
+            <a
+                href="{{
+                    url_for(
+                        'interview.result',
+                        interview_id=interview.id
+                    )
+                }}"
+            >
+                View Result
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+
+        No interviews yet.
+        Upload your resume to begin.
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

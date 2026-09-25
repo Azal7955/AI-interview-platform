@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+AI Interview - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<section class="page narrow">
+
+    <div class="interview-top">
+
+        <div>
+
+            <div class="pill">
+                LIVE PRACTICE
+            </div>
+
+            <h1>
+                AI Interview
+            </h1>
+
+        </div>
+
+
+        <div
+            class="timer"
+            id="timer"
+        >
+            15:00
+        </div>
+
+    </div>
+
+
+    <form
+        method="POST"
+        id="interviewForm"
+    >
+
+        {% for item in questions %}
+
+        <div class="question-card">
+
+            <div class="q-meta">
+
+                QUESTION {{ loop.index }}
+
+                ·
+
+                {{ item.type }}
+
+                ·
+
+                {{ item.difficulty }}
+
+            </div>
+
+
+            <h2>
+                {{ item.question }}
+            </h2>
+
+
+            <textarea
+                name="answer_{{ loop.index0 }}"
+                rows="7"
+                placeholder="Write your answer here..."
+                required
+            ></textarea>
+
+        </div>
+
+        {% endfor %}
+
+
+        <button
+            class="btn primary full"
+            type="submit"
+        >
+            Submit Interview
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+let seconds = 15 * 60;
+
+const timer =
+    document.getElementById("timer");
+
+setInterval(
+    function () {
+
+        if (seconds <= 0) {
+            return;
+        }
+
+        seconds--;
+
+        const minutes =
+            String(
+                Math.floor(
+                    seconds / 60
+                )
+            ).padStart(2, "0");
+
+        const secs =
+            String(
+                seconds % 60
+            ).padStart(2, "0");
+
+        timer.textContent =
+            `${minutes}:${secs}`;
+
+    },
+    1000
+);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}
+Upload Resume - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<div class="page narrow">
+
+    <div class="page-head">
+
+        <div>
+
+            <div class="pill">
+                STEP 1 · RESUME
+            </div>
+
+            <h1>
+                Upload your resume
+            </h1>
+
+            <p>
+                We'll analyze your skills,
+                projects, education and experience.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        class="upload-card"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <div class="upload-icon">
+            ↑
+        </div>
+
+        <h2>
+            Upload your resume
+        </h2>
+
+        <p>
+            PDF or DOCX · Maximum 8 MB
+        </p>
+
+
+        <input
+            id="resume"
+            type="file"
+            name="resume"
+            accept=".pdf,.docx"
+            required
+        >
+
+
+        <label
+            class="file-label"
+            for="resume"
+        >
+            Choose Resume
+        </label>
+
+
+        <span id="file-name">
+            No file selected
+        </span>
+
+
+        <button
+            class="btn primary full"
+            type="submit"
+        >
+            Analyze Resume
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+const input =
+    document.getElementById("resume");
+
+if (input) {
+
+    input.addEventListener(
+        "change",
+        function () {
+
+            document.getElementById(
+                "file-name"
+            ).textContent =
+                input.files[0]?.name
+                ||
+                "No file selected";
+
+        }
+    );
+
+}
+
+</script>
+
+{% endblock %}

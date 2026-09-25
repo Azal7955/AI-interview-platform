@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}
+InterviewAI - AI Interview Platform
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-copy">
+
+        <div class="pill">
+            AI-POWERED INTERVIEW PLATFORM
+        </div>
+
+        <h1>
+
+            Turn your resume into your
+
+            <span>
+                personal AI interview.
+            </span>
+
+        </h1>
+
+        <p>
+
+            Upload your resume, discover your
+            skills and practice personalized
+            interview questions generated from
+            your own background.
+
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                class="btn primary"
+                href="{{ url_for('auth.register') }}"
+            >
+                Start Interview Prep →
+            </a>
+
+            <a
+                class="btn ghost"
+                href="{{ url_for('auth.login') }}"
+            >
+                Login
+            </a>
+
+        </div>
+
+        <div class="mini-stats">
+
+            <div>
+                <b>01</b>
+                <span>Upload Resume</span>
+            </div>
+
+            <div>
+                <b>02</b>
+                <span>AI Analysis</span>
+            </div>
+
+            <div>
+                <b>03</b>
+                <span>Interview</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="orb"></div>
+
+        <div class="ai-window">
+
+            <div class="window-top">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <b>
+                    AI Interviewer
+                </b>
+
+            </div>
+
+            <div class="chat">
+
+                <div class="chat-ai">
+
+                    I found Python, Flask,
+                    SQL and Machine Learning
+                    in your resume.
+
+                </div>
+
+                <div class="chat-user">
+
+                    Start my technical interview.
+
+                </div>
+
+                <div class="chat-ai">
+
+                    Explain the Flask project
+                    you built and your role in it.
+
+                </div>
+
+            </div>
+
+            <div class="typing">
+
+                AI is analyzing your resume...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div>
+
+        <strong>01</strong>
+
+        <h3>
+            Resume Intelligence
+        </h3>
+
+        <p>
+            Extract skills, education,
+            projects and experience.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <strong>02</strong>
+
+        <h3>
+            Personalized Questions
+        </h3>
+
+        <p>
+            Generate questions from
+            your actual resume.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <strong>03</strong>
+
+        <h3>
+            Practice & Score
+        </h3>
+
+        <p>
+            Answer questions and receive
+            practice feedback.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

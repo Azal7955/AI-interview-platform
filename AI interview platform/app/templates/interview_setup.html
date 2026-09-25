@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Interview Setup - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<div class="page narrow">
+
+    <div class="page-head">
+
+        <div>
+
+            <div class="pill">
+                STEP 3 · QUESTION ENGINE
+            </div>
+
+            <h1>
+                Build Your Interview
+            </h1>
+
+            <p>
+                Questions will be generated
+                from your resume.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        class="panel setup-form"
+        method="POST"
+    >
+
+        <label>
+            Difficulty
+        </label>
+
+        <select name="difficulty">
+
+            <option value="easy">
+                Easy
+            </option>
+
+            <option
+                value="medium"
+                selected
+            >
+                Medium
+            </option>
+
+            <option value="hard">
+                Hard
+            </option>
+
+        </select>
+
+
+        <label>
+            Number of Questions
+        </label>
+
+        <input
+            type="number"
+            name="count"
+            value="8"
+            min="3"
+            max="15"
+        >
+
+
+        <div class="notice">
+
+            Your skills, projects,
+            education and experience
+            will guide the AI question engine.
+
+        </div>
+
+
+        <button
+            class="btn primary full"
+            type="submit"
+        >
+            Generate My Questions →
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

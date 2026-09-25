@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Account - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="pill">
+            WELCOME
+        </div>
+
+        <h1>
+            Create your account
+        </h1>
+
+        <p class="muted">
+            Build your personalized
+            interview workspace.
+        </p>
+
+        <form method="POST">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                required
+            >
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                minlength="6"
+                placeholder="Minimum 6 characters"
+                required
+            >
+
+
+            <button
+                class="btn primary full"
+                type="submit"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <p class="switch">
+
+            Already registered?
+
+            <a href="{{ url_for('auth.login') }}">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

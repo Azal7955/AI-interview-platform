@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block title %}
+Resume Analysis - InterviewAI
+{% endblock %}
+
+{% block content %}
+
+<section class="page">
+
+    <div class="page-head">
+
+        <div>
+
+            <div class="pill">
+                STEP 2 · AI ANALYSIS
+            </div>
+
+            <h1>
+                Your Resume Intelligence
+            </h1>
+
+            <p>
+                {{ resume.filename }}
+            </p>
+
+        </div>
+
+
+        <a
+            class="btn primary"
+            href="{{
+                url_for(
+                    'interview.start',
+                    resume_id=resume.id
+                )
+            }}"
+        >
+            Generate Interview →
+        </a>
+
+    </div>
+
+
+    <div class="analysis-layout">
+
+        <div class="analysis-main">
+
+
+            <div class="panel">
+
+                <h3>
+                    AI Summary
+                </h3>
+
+                <p>
+                    {{ analysis.summary }}
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    Detected Skills
+                </h3>
+
+                <div class="chips">
+
+                    {% for skill in analysis.skills %}
+
+                    <span>
+                        {{ skill }}
+                    </span>
+
+                    {% else %}
+
+                    <span>
+                        No skills detected.
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="two-panels">
+
+                <div class="panel">
+
+                    <h3>
+                        Education
+                    </h3>
+
+                    <ul>
+
+                        {% for item in analysis.education %}
+
+                        <li>
+                            {{ item }}
+                        </li>
+
+                        {% else %}
+
+                        <li>
+                            Not detected
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>
+                        Experience
+                    </h3>
+
+                    <ul>
+
+                        {% for item in analysis.experience %}
+
+                        <li>
+                            {{ item }}
+                        </li>
+
+                        {% else %}
+
+                        <li>
+                            Not detected
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    Projects
+                </h3>
+
+                <ul>
+
+                    {% for item in analysis.projects %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                    {% else %}
+
+                    <li>
+                        Not detected
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <aside>
+
+            <div class="side-card">
+
+                <h3>
+                    Strengths
+                </h3>
+
+                {% for item in analysis.strengths %}
+
+                <p>
+                    ✓ {{ item }}
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+
+            <div class="side-card">
+
+                <h3>
+                    Improvements
+                </h3>
+
+                {% for item in analysis.improvements %}
+
+                <p>
+                    • {{ item }}
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+{% endblock %}
